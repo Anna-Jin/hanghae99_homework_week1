@@ -19,6 +19,15 @@ public class PostRestController {
     @Autowired
     private PostService postService;
 
+    @GetMapping("/")
+    public String getPosts() {
+
+        // service 연결
+
+        return "posts/board";
+    }
+
+
     /**
      * 게시물 생성
      * @param postDto
@@ -54,9 +63,9 @@ public class PostRestController {
         Long postId = postService.updatePost(id, postDto);
 
         if (postId != null) {
-            result.put("result", "게시물 생성 완료");
+            result.put("result", "게시물 수정 완료");
         } else {
-            result.put("result", "게시물 등록에 실패했습니다. 관리자에게 문의해주세요.");
+            result.put("result", "게시물 수정에 실패했습니다. 관리자에게 문의해주세요.");
         }
 
         return result;
