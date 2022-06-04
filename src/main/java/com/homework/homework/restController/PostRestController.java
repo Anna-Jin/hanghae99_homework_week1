@@ -28,7 +28,9 @@ public class PostRestController {
      */
     @GetMapping("")
     public List<Post> getPosts() {
-        return postService.getPosts();
+        List<Post> postsList = postService.getPosts();
+
+        return null;
     }
 
     /**
