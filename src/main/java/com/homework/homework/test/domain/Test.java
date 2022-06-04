@@ -1,14 +1,11 @@
 package com.homework.homework.test.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
 @NoArgsConstructor
 public class Test {
 
@@ -21,6 +18,7 @@ public class Test {
 
     @Column(nullable = false)
     private int age;
+
 
     public Test(String name, int age) {
         this.name = name;
