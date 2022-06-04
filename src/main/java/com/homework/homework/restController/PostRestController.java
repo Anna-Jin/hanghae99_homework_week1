@@ -1,13 +1,16 @@
 package com.homework.homework.restController;
 
+import com.homework.homework.domain.Post;
 import com.homework.homework.dto.PostDto;
 import com.homework.homework.service.PostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,14 +22,14 @@ public class PostRestController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/")
-    public String getPosts() {
-
-        // service 연결
-
-        return "posts/board";
+    /**
+     * 게시물 가져오기
+     * @return
+     */
+    @GetMapping("")
+    public List<Post> getPosts() {
+        return postService.getPosts();
     }
-
 
     /**
      * 게시물 생성
@@ -44,6 +47,7 @@ public class PostRestController {
             result.put("result", "게시물 생성 완료");
         } else {
             result.put("result", "게시물 등록에 실패했습니다. 관리자에게 문의해주세요.");
+            logger.error("[post] 게시물 등록 id: {}", postDto.getId());
         }
         return result;
     }
@@ -66,6 +70,7 @@ public class PostRestController {
             result.put("result", "게시물 수정 완료");
         } else {
             result.put("result", "게시물 수정에 실패했습니다. 관리자에게 문의해주세요.");
+            logger.error("[post] 게시물 수정 id: {}", postDto.getId());
         }
 
         return result;
