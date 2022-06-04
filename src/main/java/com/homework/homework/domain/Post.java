@@ -1,5 +1,8 @@
 package com.homework.homework.domain;
 
+import com.homework.homework.dto.PostDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +10,8 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Post extends Timestamped{
 
@@ -20,12 +25,18 @@ public class Post extends Timestamped{
     @Column(nullable = false)
     private String nickname;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String content;
 
     public Post(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public void update(PostDto postDto) {
+        this.title = postDto.getTitle();
+        this.nickname = postDto.getNickname();
+        this.content = postDto.getContent();
     }
 
 }
