@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
+import java.util.List;
 
 @SpringBootTest
 class HomeworkApplicationTests {
@@ -23,16 +23,9 @@ class HomeworkApplicationTests {
 
     @Test
     @Transactional
-    void save() {
-        PostDto postDto = new PostDto();
-        postDto.setTitle("안녕하세요");
-        postDto.setContent("테스트입니다.");
-        
-        postService.addPost(postDto);
+    void getPostTest() {
+        List<Post> posts = postRepository.findAll();
 
-        Post post = postRepository.findById(1L).get();
-
-        Assertions.assertThat(postDto.getTitle()).isEqualTo(post.getTitle());
     }
 
 }
