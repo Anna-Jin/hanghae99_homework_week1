@@ -30,7 +30,7 @@ public class PostRestController {
     public List<Post> getPosts() {
         List<Post> postsList = postService.getPosts();
 
-        return null;
+        return postsList;
     }
 
     /**
@@ -42,37 +42,36 @@ public class PostRestController {
     public Map<String, Object> addPost(@RequestBody PostDto postDto) {
         Map<String, Object> result = new HashMap<>();
 
-        // service 연결
-        Long postId = postService.addPost(postDto);
+        Long id = postService.addPost(postDto);
 
-        if (postId != null) {
+        if (id != null) {
             result.put("result", "게시물 생성 완료");
         } else {
             result.put("result", "게시물 등록에 실패했습니다. 관리자에게 문의해주세요.");
-            logger.error("[post] 게시물 등록 id: {}", postDto.getId());
+            logger.error("[post] 게시물 등록");
         }
         return result;
     }
 
     /**
      * 게시물 수정
-     * @param id
+     * @param postId
      * @param postDto
      * @return
      */
-    @PostMapping("/newpost/{id}")
+    @PutMapping("/newpost/{postId}")
     public Map<String, Object> updatePost(
-            @PathVariable Long id,
+            @PathVariable Long postId,
             @RequestBody PostDto postDto) {
         Map<String, Object> result = new HashMap<>();
 
-        Long postId = postService.updatePost(id, postDto);
+        Long id = postService.updatePost(postId, postDto);
 
-        if (postId != null) {
+        if (id != null) {
             result.put("result", "게시물 수정 완료");
         } else {
             result.put("result", "게시물 수정에 실패했습니다. 관리자에게 문의해주세요.");
-            logger.error("[post] 게시물 수정 id: {}", postDto.getId());
+            logger.error("[post] 게시물 수정 id: {}", id);
         }
 
         return result;

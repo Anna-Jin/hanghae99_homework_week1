@@ -14,7 +14,10 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
-
+    /**
+     * 게시물 조회
+     * @return
+     */
     public List<Post> getPosts() {
         List<Post> posts = postRepository.findAll();
         return posts;
@@ -37,13 +40,13 @@ public class PostService {
 
     /**
      * 게시물 수정
-     * @param id
+     * @param postId
      * @param postDto
      * @return
      */
-    public Long updatePost(Long id, PostDto postDto) {
-        Post post = postRepository.findById(id)
-                .orElseThrow(() -> new NullPointerException("존재하지 않는 아이디입니다."));
+    public Long updatePost(Long postId, PostDto postDto) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new NullPointerException("존재하지 않는 게시글입니다."));
 
         post.update(postDto);
 

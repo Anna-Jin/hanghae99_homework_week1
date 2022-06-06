@@ -7,9 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class Post extends Timestamped{
 
@@ -25,6 +22,13 @@ public class Post extends Timestamped{
 
     @Column(nullable = false)
     private String content;
+
+    @Builder
+    public Post(String title, String nickname, String content) {
+        this.title = title;
+        this.nickname = nickname;
+        this.content = content;
+    }
 
 
     public void update(PostDto postDto) {
