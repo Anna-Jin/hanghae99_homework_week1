@@ -1,8 +1,10 @@
 package com.homework.homework.dto;
 
-public class CommentDto {
+import lombok.Getter;
+import lombok.Setter;
 
-    private Long id;
+@Getter @Setter
+public class CommentDto {
     private String nickname;
     private String comment;
 }

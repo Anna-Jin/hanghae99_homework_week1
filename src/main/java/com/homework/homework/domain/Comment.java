@@ -5,8 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
-@Builder @AllArgsConstructor
+@Getter
 @NoArgsConstructor
 public class Comment extends Timestamped{
 
@@ -14,8 +13,8 @@ public class Comment extends Timestamped{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "POST_ID", nullable = false)
     private Post post;
 
     @Column(nullable = false)
@@ -24,7 +23,14 @@ public class Comment extends Timestamped{
     @Column(nullable = false)
     private String comment;
 
-    private void update(String nickname, String comment) {
+    @Builder
+    public Comment(Post post, String nickname, String comment) {
+        this.post = post;
+        this.nickname = nickname;
+        this.comment = comment;
+    }
+
+    public void update(String nickname, String comment) {
         this.nickname = nickname;
         this.comment = comment;
     }
