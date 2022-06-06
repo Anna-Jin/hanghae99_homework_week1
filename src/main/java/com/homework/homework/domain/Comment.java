@@ -1,5 +1,6 @@
 package com.homework.homework.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class Comment extends Timestamped{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "POST_ID", nullable = false)
+    @JsonBackReference
     private Post post;
 
     @Column(nullable = false)
