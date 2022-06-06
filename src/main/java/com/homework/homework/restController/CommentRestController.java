@@ -28,9 +28,7 @@ public class CommentRestController {
     public List<Comment> getComments(
             @PathVariable Long postId
     ) {
-        List<Comment> comments = commentService.getComments(postId);
-
-        return comments;
+        return commentService.getComments(postId);
     }
 
 
