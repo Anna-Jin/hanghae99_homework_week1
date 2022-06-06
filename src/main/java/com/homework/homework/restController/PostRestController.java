@@ -3,10 +3,8 @@ package com.homework.homework.restController;
 import com.homework.homework.domain.Post;
 import com.homework.homework.dto.PostDto;
 import com.homework.homework.service.PostService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -15,9 +13,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/posts")
+@Slf4j
 public class PostRestController {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private PostService postService;
@@ -48,7 +45,7 @@ public class PostRestController {
             result.put("result", "게시물 생성 완료");
         } else {
             result.put("result", "게시물 등록에 실패했습니다. 관리자에게 문의해주세요.");
-            logger.error("[post] 게시물 등록");
+            log.error("[post] 게시물 등록");
         }
         return result;
     }
@@ -71,7 +68,7 @@ public class PostRestController {
             result.put("result", "게시물 수정 완료");
         } else {
             result.put("result", "게시물 수정에 실패했습니다. 관리자에게 문의해주세요.");
-            logger.error("[post] 게시물 수정 id: {}", id);
+            log.error("[post] 게시물 수정 id: {}", id);
         }
 
         return result;
@@ -87,6 +84,8 @@ public class PostRestController {
             @PathVariable Long postId
     ) {
         postService.deletePost(postId);
+
+        log.info("[post] 게시물 삭제 id : {}", postId);
 
         return "게시물 삭제 완료";
     }

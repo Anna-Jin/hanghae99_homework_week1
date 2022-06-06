@@ -3,8 +3,7 @@ package com.homework.homework.restController;
 import com.homework.homework.domain.Comment;
 import com.homework.homework.dto.CommentDto;
 import com.homework.homework.service.CommentService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +13,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/comments")
+@Slf4j
 public class CommentRestController {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private CommentService commentService;
@@ -53,7 +51,7 @@ public class CommentRestController {
             result.put("result", "댓글 생성 성공");
         } else {
             result.put("result", "댓글 등록에 실패했습니다. 관리자에게 문의해주세요");
-            logger.error("[comment] 댓글 등록 id : {}", postId);
+            log.error("[comment] 댓글 등록 id : {}", postId);
         }
 
         return result;
@@ -78,7 +76,7 @@ public class CommentRestController {
             result.put("result", "댓글 수정 완료");
         } else {
             result.put("result", "댓글 수정에 실패했습니다. 관리자에게 문의해주세요.");
-            logger.error("[comment] 댓글 수정 commentId : {}", commentId);
+            log.error("[comment] 댓글 수정 commentId : {}", commentId);
         }
 
         return result;
@@ -94,6 +92,7 @@ public class CommentRestController {
             @PathVariable Long commentId
     ) {
         commentService.deleteComment(commentId);
+        log.info("[comment] 댓글 삭제 id : {}", commentId);
 
         return "댓글 삭제 완료";
     }
