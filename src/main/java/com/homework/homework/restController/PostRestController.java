@@ -76,4 +76,18 @@ public class PostRestController {
 
         return result;
     }
+
+    /**
+     * 게시물 삭제
+     * @param postId
+     * @return
+     */
+    @DeleteMapping("/{postId}")
+    public String deletePost(
+            @PathVariable Long postId
+    ) {
+        postService.deletePost(postId);
+
+        return "게시물 삭제 완료";
+    }
 }

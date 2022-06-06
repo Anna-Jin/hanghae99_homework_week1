@@ -21,7 +21,11 @@ public class CommentRestController {
     @Autowired
     private CommentService commentService;
 
-
+    /**
+     * 댓글 목록 조회
+     * @param postId
+     * @return
+     */
     @GetMapping("/{postId}")
     public List<Comment> getComments(
             @PathVariable Long postId
@@ -57,29 +61,41 @@ public class CommentRestController {
 
     /**
      * 댓글 수정
-     * @param postId
      * @param commentId
      * @param commentDto
      * @return
      */
-    @PutMapping("/{postId}/{commentId}")
+    @PutMapping("/{commentId}")
     public Map<String, Object> updateComment(
-            @PathVariable Long postId,
             @PathVariable Long commentId,
             @RequestBody CommentDto commentDto
     ) {
         Map<String, Object> result = new HashMap<>();
 
-        Long id = commentService.updateComment(postId, commentId, commentDto);
+        Long id = commentService.updateComment(commentId, commentDto);
 
         if (id != null) {
             result.put("result", "댓글 수정 완료");
         } else {
             result.put("result", "댓글 수정에 실패했습니다. 관리자에게 문의해주세요.");
-            logger.error("[comment] 댓글 수정 postId: {}, commentId : {}", postId, commentId);
+            logger.error("[comment] 댓글 수정 commentId : {}", commentId);
         }
 
         return result;
+    }
+
+    /**
+     * 댓글 삭제
+     * @param commentId
+     * @return
+     */
+    @DeleteMapping("/{commentId}")
+    public String deleteComment(
+            @PathVariable Long commentId
+    ) {
+        commentService.deleteComment(commentId);
+
+        return "댓글 삭제 완료";
     }
 
 }

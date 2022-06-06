@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -50,16 +51,24 @@ public class CommentService {
 
     /**
      * 댓글 수정
-     * @param postId
      * @param commentId
      * @param commentDto
      * @return
      */
-    public Long updateComment(Long postId, Long commentId, CommentDto commentDto) {
-        Comment comment = commentRepository.findCommentByPostIdAndId(postId, commentId);
+    public Long updateComment(Long commentId, CommentDto commentDto) {
+//        Post post = postRepository.findById(postId).orElseThrow(() -> new NullPointerException("해당 게시물이 존재하지 않습니다."));
 
-        comment.update(commentDto.getNickname(), commentDto.getComment());
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new NullPointerException("해당 댓글이 존재하지 않습니다."));
+        comment.update(commentDto);
 
         return commentRepository.save(comment).getId();
+    }
+
+    /**
+     * 댓글 삭제
+     * @param commentId
+     */
+    public void deleteComment(Long commentId) {
+        commentRepository.deleteById(commentId);
     }
 }

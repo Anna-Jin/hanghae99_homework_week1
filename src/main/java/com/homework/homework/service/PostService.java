@@ -53,4 +53,13 @@ public class PostService {
         return postRepository.save(post).getId();
     }
 
+
+    /**
+     * 게시물 삭제
+     * @param postId
+     */
+    public void deletePost(Long postId) {
+        postRepository.deleteById(postId);
+    }
+
 }

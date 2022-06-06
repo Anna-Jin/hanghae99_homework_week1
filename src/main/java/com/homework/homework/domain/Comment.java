@@ -1,6 +1,7 @@
 package com.homework.homework.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.homework.homework.dto.CommentDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,8 +33,8 @@ public class Comment extends Timestamped{
         this.comment = comment;
     }
 
-    public void update(String nickname, String comment) {
-        this.nickname = nickname;
-        this.comment = comment;
+    public void update(CommentDto commentDto) {
+        this.nickname = commentDto.getNickname();
+        this.comment = commentDto.getComment();
     }
 }
