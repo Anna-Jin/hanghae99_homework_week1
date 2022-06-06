@@ -1,5 +1,6 @@
 package com.homework.homework.restController;
 
+import com.homework.homework.domain.Comment;
 import com.homework.homework.dto.CommentDto;
 import com.homework.homework.service.CommentService;
 import org.slf4j.Logger;
@@ -21,8 +22,14 @@ public class CommentRestController {
     private CommentService commentService;
 
 
-//    @GetMapping("/{postId}")
-//    public List<CommentDto>
+    @GetMapping("/{postId}")
+    public List<Comment> getComments(
+            @PathVariable Long postId
+    ) {
+        List<Comment> comments = commentService.getComments(postId);
+
+        return comments;
+    }
 
 
     /**

@@ -19,6 +19,13 @@ public class CommentService {
     @Autowired
     private PostRepository postRepository;
 
+
+    public List<Comment> getComments(Long postId) {
+        Post post = postRepository.findById(postId).get();
+
+        return post.getComments();
+    }
+
     /**
      * 댓글 생성
      * @param commentDto
