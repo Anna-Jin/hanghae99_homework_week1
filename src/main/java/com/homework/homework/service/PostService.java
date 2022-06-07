@@ -1,11 +1,9 @@
 package com.homework.homework.service;
 
 import com.homework.homework.domain.Post;
-import com.homework.homework.domain.Timestamped;
 import com.homework.homework.dto.PostDto;
 import com.homework.homework.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +24,13 @@ public class PostService {
         return posts;
 
     }
+
+    public Post getPost(Long postId) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new NullPointerException("해당하는 게시물이 존재하지 않습니다."));
+
+        return post;
+    }
+
 
     /**
      * 게시물 생성

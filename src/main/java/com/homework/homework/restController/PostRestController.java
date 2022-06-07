@@ -30,6 +30,17 @@ public class PostRestController {
         return postsList;
     }
 
+    @GetMapping("/{postId}")
+    public Post getPost(
+            @PathVariable Long postId
+    ) {
+        Post post = postService.getPost(postId);
+
+        return post;
+    }
+
+
+
     /**
      * 게시물 생성
      * @param postDto

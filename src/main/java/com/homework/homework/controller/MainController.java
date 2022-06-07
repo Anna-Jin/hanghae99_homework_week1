@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,9 +17,11 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(Model model) {
-        List<Post> posts = postService.getPosts();
 
-        model.addAttribute("posts", posts);
+        Long postId = 1L;
+        Post post = postService.getPost(postId);
+
+        model.addAttribute("post", post);
 
         return "main/main";
     }

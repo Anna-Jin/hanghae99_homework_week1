@@ -1,12 +1,29 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>나만의 블로그</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>hello world!!</h1>
+<h1>hello world</h1>
+<h1 th:text="${post.title}"><b>제목 : </b></h1>
+<div th:text="${post.nickname}"><b>작성자 : </b></div>
+<br>
+<br>
+<div th:text="${post.content}"></div>
 
+<hr>
+
+<table>
+    <tr>
+        <th>작성자</th>
+        <th>내용</th>
+    </tr>
+    <tr th:each="comment : ${post.comments}">
+        <td th:text="${comment.nickname}"></td>
+        <td th:text="${comment.comment}"></td>
+    </tr>
+</table>
 
 
 
