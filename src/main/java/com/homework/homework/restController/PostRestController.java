@@ -30,6 +30,11 @@ public class PostRestController {
         return postsList;
     }
 
+    /**
+     * 게시물 단건 조회
+     * @param postId
+     * @return
+     */
     @GetMapping("/{postId}")
     public Post getPost(
             @PathVariable Long postId

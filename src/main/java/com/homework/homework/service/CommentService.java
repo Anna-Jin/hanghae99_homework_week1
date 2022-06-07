@@ -20,14 +20,6 @@ public class CommentService {
     @Autowired
     private PostRepository postRepository;
 
-    /**
-     * 댓글 조회
-     * @param postId
-     * @return
-     */
-    public List<Comment> getComments(Long postId) {
-        return commentRepository.findCommentsByPostId(postId);
-    }
 
     /**
      * 댓글 생성

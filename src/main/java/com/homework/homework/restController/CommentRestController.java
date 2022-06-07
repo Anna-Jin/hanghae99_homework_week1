@@ -20,19 +20,6 @@ public class CommentRestController {
     private CommentService commentService;
 
     /**
-     * 댓글 목록 조회
-     * @param postId
-     * @return
-     */
-    @GetMapping("/{postId}")
-    public List<Comment> getComments(
-            @PathVariable Long postId
-    ) {
-        return commentService.getComments(postId);
-    }
-
-
-    /**
      * 댓글 생성
      * @param commentDto
      * @return
