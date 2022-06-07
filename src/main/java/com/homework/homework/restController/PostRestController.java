@@ -20,7 +20,7 @@ public class PostRestController {
     private PostService postService;
 
     /**
-     * 게시물 가져오기
+     * 모든 게시물 조회
      * @return
      */
     @GetMapping("")

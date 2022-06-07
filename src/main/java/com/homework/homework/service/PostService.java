@@ -1,9 +1,11 @@
 package com.homework.homework.service;
 
 import com.homework.homework.domain.Post;
+import com.homework.homework.domain.Timestamped;
 import com.homework.homework.dto.PostDto;
 import com.homework.homework.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +17,14 @@ public class PostService {
     private PostRepository postRepository;
 
     /**
-     * 게시물 조회
+     * 모든 게시물 조회
      * @return
      */
     public List<Post> getPosts() {
-        List<Post> posts = postRepository.findAll();
+        List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
+
         return posts;
+
     }
 
     /**
