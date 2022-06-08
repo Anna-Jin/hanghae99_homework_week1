@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +34,9 @@ public class CommentRestController {
 
         Long id = commentService.addComment(postId, commentDto);
 
+        // 리팩토링 때 삭제할 것
         if (id != null) {
-            result.put("result", "댓글 생성 성공");
+            result.put("result", "댓글 작성 완료");
         } else {
             result.put("result", "댓글 등록에 실패했습니다. 관리자에게 문의해주세요");
             log.error("[comment] 댓글 등록 id : {}", postId);

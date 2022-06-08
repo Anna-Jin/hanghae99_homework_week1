@@ -9,6 +9,6 @@ import javax.validation.constraints.NotEmpty;
 public class CommentDto {
     private String nickname;
 
-    @NotEmpty
+    @NotEmpty(message = "댓글 내용을 작성해주세요.")
     private String comment;
 }

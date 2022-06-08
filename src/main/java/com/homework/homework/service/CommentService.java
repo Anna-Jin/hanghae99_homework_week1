@@ -26,7 +26,8 @@ public class CommentService {
     public Long addComment(Long postId, CommentDto commentDto) {
 
         Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new NullPointerException("해당 게시글이 존재하지 않습니다." + postId)); // 어차피 postId가 not null이라 예외처리가 필요없을거 같긴 한데?
+                .orElseThrow(() -> new NullPointerException("해당 게시글이 존재하지 않습니다." + postId));
+
 
         Comment comment = Comment.builder()
                 .post(post)
