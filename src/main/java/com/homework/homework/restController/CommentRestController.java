@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class CommentRestController {
     @PostMapping("/{postId}/newcomment")
     public Map<String, Object> addComment(
             @PathVariable Long postId,
-            @RequestBody CommentDto commentDto) {
+            @RequestBody @Valid CommentDto commentDto) {
         Map<String, Object> result = new HashMap<>();
 
         Long id = commentService.addComment(postId, commentDto);
@@ -51,7 +52,7 @@ public class CommentRestController {
     @PutMapping("/{commentId}")
     public Map<String, Object> updateComment(
             @PathVariable Long commentId,
-            @RequestBody CommentDto commentDto
+            @RequestBody @Valid CommentDto commentDto
     ) {
         Map<String, Object> result = new HashMap<>();
 
