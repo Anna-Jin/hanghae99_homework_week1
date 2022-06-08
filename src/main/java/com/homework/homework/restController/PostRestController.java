@@ -2,6 +2,7 @@ package com.homework.homework.restController;
 
 import com.homework.homework.domain.Post;
 import com.homework.homework.dto.PostDto;
+import com.homework.homework.dto.PostResponseDto;
 import com.homework.homework.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,7 @@ public class PostRestController {
      */
     @GetMapping("")
     public List<Post> getPosts() {
-        List<Post> postsList = postService.getPosts();
-
-        return postsList;
+        return postService.getPosts();
     }
 
     /**
@@ -39,9 +38,7 @@ public class PostRestController {
     public Post getPost(
             @PathVariable Long postId
     ) {
-        Post post = postService.getPost(postId);
-
-        return post;
+        return postService.getPost(postId);
     }
 
 

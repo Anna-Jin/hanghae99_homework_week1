@@ -2,10 +2,13 @@ package com.homework.homework.service;
 
 import com.homework.homework.domain.Post;
 import com.homework.homework.dto.PostDto;
+import com.homework.homework.dto.PostResponseDto;
 import com.homework.homework.repository.PostRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,10 +22,7 @@ public class PostService {
      * @return
      */
     public List<Post> getPosts() {
-        List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc();
-
-        return posts;
-
+        return postRepository.findAllByOrderByCreatedAtDesc();
     }
 
 
