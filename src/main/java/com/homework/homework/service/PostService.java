@@ -25,6 +25,12 @@ public class PostService {
 
     }
 
+
+    /**
+     * 게시물 단건 조회
+     * @param postId
+     * @return
+     */
     public Post getPost(Long postId) {
         Post post = postRepository.findById(postId).orElseThrow(() -> new NullPointerException("해당하는 게시물이 존재하지 않습니다."));
 
