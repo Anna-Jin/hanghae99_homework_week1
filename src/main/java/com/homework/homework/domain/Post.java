@@ -28,6 +28,7 @@ public class Post extends Timestamped{
     @Column(nullable = false)
     private String content;
 
+    @OrderBy(value = "createdAt DESC")
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 

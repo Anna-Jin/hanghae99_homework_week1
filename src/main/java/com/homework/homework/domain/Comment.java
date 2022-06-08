@@ -1,5 +1,7 @@
 package com.homework.homework.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.homework.homework.dto.CommentDto;
 import lombok.Builder;
 import lombok.Getter;
