@@ -24,8 +24,9 @@ class HomeworkApplicationTests {
     @Test
     @Transactional
     void getPostTest() {
-        List<Post> posts = postRepository.findAll();
+        Long postId = 1L;
 
+        Post post = postService.getPost(postId);
     }
 
 }
