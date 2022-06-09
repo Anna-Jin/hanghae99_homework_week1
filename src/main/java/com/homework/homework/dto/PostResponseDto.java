@@ -1,7 +1,5 @@
 package com.homework.homework.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

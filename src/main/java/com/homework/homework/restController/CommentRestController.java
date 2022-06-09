@@ -1,6 +1,5 @@
 package com.homework.homework.restController;
 
-import com.homework.homework.domain.Comment;
 import com.homework.homework.dto.CommentDto;
 import com.homework.homework.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
@@ -8,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.ValidationException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController

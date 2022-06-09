@@ -29,7 +29,7 @@ public class Post extends Timestamped{
     private String content;
 
     @OrderBy(value = "createdAt DESC")
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Comment> comments;
 
     @Builder

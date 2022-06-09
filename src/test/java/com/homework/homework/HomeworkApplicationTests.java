@@ -1,7 +1,9 @@
 package com.homework.homework;
 
 import com.homework.homework.domain.Post;
+import com.homework.homework.dto.CommentDto;
 import com.homework.homework.repository.PostRepository;
+import com.homework.homework.service.CommentService;
 import com.homework.homework.service.PostService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,6 @@ class HomeworkApplicationTests {
 
         Post post = postService.getPost(postId);
     }
+
 
 }
