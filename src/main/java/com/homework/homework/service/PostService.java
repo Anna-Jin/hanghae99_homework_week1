@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,13 +60,14 @@ public class PostService {
      * @param postDto
      * @return
      */
+    @Transactional
     public Long updatePost(Long postId, PostDto postDto) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new NullPointerException("존재하지 않는 게시글입니다."));
 
         post.update(postDto);
 
-        return postRepository.save(post).getId();
+        return post.getId();
     }
 
 

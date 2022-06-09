@@ -8,6 +8,8 @@ import com.homework.homework.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class CommentService {
 
@@ -44,11 +46,12 @@ public class CommentService {
      * @param commentDto
      * @return
      */
+    @Transactional
     public Long updateComment(Long commentId, CommentDto commentDto) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new NullPointerException("해당 댓글이 존재하지 않습니다."));
         comment.update(commentDto);
 
-        return commentRepository.save(comment).getId();
+        return comment.getId();
     }
 
     /**
