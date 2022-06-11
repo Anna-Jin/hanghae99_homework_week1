@@ -15,6 +15,7 @@
   * [3. DB & 배포](#3-db-&-배포-1)
 - [DB 설계](#db-설계-1)
 - [API 명세](#api-명세-1)
+- [THINK LOG](#THINK-LOG)
 
 
 <br>
@@ -55,5 +56,11 @@
 [노션 API 명세 페이지](https://planet-punishment-427.notion.site/API-24d52dc7a6394a3fb16c1c836a804487)
 
 
+
+<br>
+
+## THINK LOG
+
+[노션 일차별 개발 로그](https://planet-punishment-427.notion.site/1-Think-log-05c15f50f0df49c8abd0955aa6672b32)
 
 
